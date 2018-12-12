@@ -9,7 +9,9 @@ inline fun timeSolution(body: () -> Unit) {
   val start = System.currentTimeMillis()
   try {
     body()
-  } catch (e: Throwable) {
+  } catch (e : FinishedSignal) {
+    //Do nothing, cheap escape to get out of a loop
+  }catch (e: Throwable) {
     println("Exception caught ${e.localizedMessage}")
     e.printStackTrace()
   } finally {
@@ -17,3 +19,5 @@ inline fun timeSolution(body: () -> Unit) {
     println("Total runtime: ${finish - start}ms")
   }
 }
+
+class FinishedSignal: RuntimeException()
