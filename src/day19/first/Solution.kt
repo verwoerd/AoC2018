@@ -128,7 +128,7 @@ data class Register(var r0: Int, var r1: Int, var r2: Int, var r3: Int, var r4: 
   }
 }
 
-val operationRegex = Regex("(\\w+) (\\d) (\\d+) (\\d)")
+val operationRegex = Regex("(\\w+) (\\d+) (\\d+) (\\d)")
 val ipRegex = Regex("#ip (\\d)")
 fun parseLine(line: String) = when {
   line[0] == '#' -> Instruction(
